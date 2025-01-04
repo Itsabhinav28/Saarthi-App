@@ -1,6 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:next_step/Const/const_colo.dart';
+import 'package:next_step/Screen/Avatar/Guide.dart';
 import 'package:next_step/Screen/Home_PageScreen/Home_pageScreen.dart';
 import 'package:next_step/Screen/Profile/Profile_Screen.dart';
 import 'package:next_step/Screen/Progress/Progress_Screen.dart';
@@ -17,7 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
   // Define a list of widgets (pages) to show based on the index
   final List<Widget> _pages = [
     HomepageScreen(),
-    CommunityScreen(), // Add CommunityScreen here
+    CommunityScreen(),
+    GuideScreen(), // Add CommunityScreen here
     ProgressScreen(),
     ProfileScreen(),
   ];
@@ -27,7 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Map<String, dynamic>> _navigationItems = [
     {'icon': Icons.home, 'label': 'Home'},
-    {'icon': Icons.group, 'label': 'Community'}, // Community navigation item
+    {'icon': Icons.group, 'label': 'Community'},
+    {'icon': Icons.accessibility, 'label': 'Guide'}, // Community navigation item
     {'icon': Icons.show_chart, 'label': 'Progress'},
     {'icon': Icons.person, 'label': 'Profile'},
   ];
