@@ -116,30 +116,42 @@ class _HomepageScreenState extends State<HomepageScreen> {
               ),
             ],
             flexibleSpace: FlexibleSpaceBar(
-              background: Padding(
-                padding: const EdgeInsets.only(left: 16.0, top: 64.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                    SizedBox(height: 60),
-                    Text(
-                      "Good Morning, User!",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+              background: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/Front.png"), // Background image if desired
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Colors.black.withOpacity(0.3), // Optional: Slight dark overlay for better text visibility
+                      BlendMode.darken,
                     ),
-                    Text(
-                      "Welcome Back to Saarthi",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16.0, top: 64.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: const [
+                      SizedBox(height: 60),
+                      Text(
+                        "Good Morning, User!",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                  ],
+                      Text(
+                        "Welcome Back to Saarthi",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -188,3 +200,4 @@ class _HomepageScreenState extends State<HomepageScreen> {
     );
   }
 }
+

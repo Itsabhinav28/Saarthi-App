@@ -30,7 +30,7 @@ class PeerCounselingScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Peer Counseling",
+          "Counseling",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         backgroundColor:  const Color.fromARGB(255, 78, 133, 86),

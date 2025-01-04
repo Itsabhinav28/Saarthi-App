@@ -26,7 +26,7 @@ class _ChooseAvatarScreenState extends State<ChooseAvatarScreen> {
   final List<String> avatarNames = [
     'Sagar',
     'Reet',
-    'Ravana',
+    'Abhinav',
     'Sri',
   ];
 

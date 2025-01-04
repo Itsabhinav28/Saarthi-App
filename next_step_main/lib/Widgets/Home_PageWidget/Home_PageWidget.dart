@@ -21,7 +21,7 @@ class MainSectionWidget extends StatelessWidget {
             children: [
               _buildSectionBox(
                 context,
-                title: "Peer Counseling",
+                title: "Counseling",
                 icon: Icons.support_agent,
                 color: const Color(0xFF4B5945),
                 width: sectionWidth,
@@ -34,19 +34,20 @@ class MainSectionWidget extends StatelessWidget {
                 },
               ),
               _buildSectionBox(
-                context,
-                title: "Subjects",
-                icon: Icons.book,
-                color: const Color(0xFF6D9F71),
-                width: sectionWidth,
-                height: sectionHeight,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SubjectScreen()),
-                  );
-                },
-              ),
+  context,
+  title: "AR Learning",
+  icon: Icons.view_in_ar,  // AR-related icon
+  color: const Color(0xFF6D9F71),
+  width: sectionWidth,
+  height: sectionHeight,
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SubjectScreen()),
+    );
+  },
+),
+
             ],
           ),
           const SizedBox(height: 16.0),

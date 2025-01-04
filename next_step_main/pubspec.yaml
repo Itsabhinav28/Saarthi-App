@@ -40,6 +40,10 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/models/ar_geometry_model.glb
+    - assets/models/ar_chemistry_model.glb
+    - assets/models/ar_monuments_model.glb
+
      
     # This ensures that both your assets and images are included
 

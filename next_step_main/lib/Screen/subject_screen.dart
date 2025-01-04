@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:model_viewer_plus/model_viewer_plus.dart';
 
 class SubjectScreen extends StatelessWidget {
   const SubjectScreen({Key? key}) : super(key: key);
@@ -12,144 +13,156 @@ class SubjectScreen extends StatelessWidget {
     ];
 
     final List<Map<String, String>> arTools = [
-      {"name": "AR Geometry", "description": "Learn geometry concepts interactively using AR.", "tool": "AR Geometry Tool"},
-      {"name": "AR Chemistry Lab", "description": "Explore chemistry experiments and molecular structures with AR.", "tool": "AR Chemistry Tool"},
-      {"name": "Historical Monuments AR", "description": "Explore historical monuments in AR and interact with them.", "tool": "Historical Monuments AR"},
+      {"name": "AR Geometry", "model": "assets/models/ar_geometry_model.glb", "description": "Learn geometry concepts interactively using AR."},
+      {"name": "AR Chemistry Lab", "model": "assets/models/ar_chemistry_model.glb", "description": "Explore chemistry experiments and molecular structures with AR."},
+      {"name": "Historical Monuments AR", "model": "assets/models/ar_monuments_model.glb", "description": "Explore historical monuments in AR and interact with them."},
     ];
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Subjects & AR Learning",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
+        title: const Text("AR Learning", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
         backgroundColor: const Color(0xFF6D9F71),
-        elevation: 5,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
-        ),
       ),
-      backgroundColor: const Color(0xFFB2C9AD),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Section for Subjects
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 16),
-                child: Text(
-                  "Subjects",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                ),
+      backgroundColor: Colors.white,  // Set Scaffold background to white
+      body: Stack(
+        children: [
+          // Background Image (Optional)
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/GETSTARTEDBG.png'), // Optional background image
+                fit: BoxFit.cover,
               ),
-              // Displaying subject list
-              ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: subjects.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    margin: const EdgeInsets.symmetric(vertical: 8),
-                    elevation: 3,
-                    child: ListTile(
-                      contentPadding: const EdgeInsets.all(16),
-                      title: Text(
-                        subjects[index]['name']!,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      trailing: const Icon(Icons.picture_as_pdf),
-                      onTap: () {
-                        // Open PDF viewer here (use packages like pdf_flutter or flutter_pdfview)
-                      },
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(height: 30),
-              // Section for AR Learning Tools
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 16),
-                child: Text(
-                  "AR Learning Tools",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                ),
-              ),
-              // Displaying AR tools
-              ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: arTools.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    margin: const EdgeInsets.symmetric(vertical: 8),
-                    elevation: 3,
-                    color: Colors.grey[50],
-                    child: ListTile(
-                      contentPadding: const EdgeInsets.all(16),
-                      title: Text(
-                        arTools[index]['name']!,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      subtitle: Text(
-                        arTools[index]['description']!,
-                        style: const TextStyle(fontSize: 14, color: Colors.black45),
-                      ),
-                      trailing: const Icon(Icons.touch_app),
-                      onTap: () {
-                        // Open AR tool (use packages for AR integration like ARCore, Vuforia)
-                      },
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(height: 20),
-              // A button to launch AR tools
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Navigate to AR tools or more information
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF6D9F71),
-                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    elevation: 5,
-                  ),
-                  child: const Text(
-                    'Explore AR Tools',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
+          Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // Section for Subjects
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    child: Text(
+                      "Subjects",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ),
+                  // Displaying subject list
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: subjects.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        margin: const EdgeInsets.symmetric(vertical: 8),
+                        elevation: 3,
+                        child: ListTile(
+                          contentPadding: const EdgeInsets.all(16),
+                          title: Text(
+                            subjects[index]['name']!,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          trailing: const Icon(Icons.picture_as_pdf),
+                          onTap: () {
+                            // Open PDF viewer here (use packages like pdf_flutter or flutter_pdfview)
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    child: Text(
+                      "AR Learning Tools",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ),
+                  // Displaying AR tools with ModelViewer
+                  ...arTools.asMap().entries.map((entry) {
+                    int index = entry.key;
+                    String model = entry.value['model']!;
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          // Handle AR tool interaction here (if needed)
+                        },
+                        child: Container(
+                          width: 250,
+                          height: 360,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black26,
+                                blurRadius: 10,
+                                offset: const Offset(0, 5),
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              // Constrained ModelViewer widget for AR tools
+                              Container(
+                                width: 200,
+                                height: 200,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: ModelViewer(
+                                    backgroundColor: Colors.transparent,
+                                    src: model,
+                                    alt: 'AR Tool ${index + 1}',
+                                    ar: true,
+                                    autoRotate: false,
+                                    disableZoom: false,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                arTools[index]['name']!,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              Text(
+                                arTools[index]['description']!,
+                                style: const TextStyle(fontSize: 14, color: Colors.black45),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

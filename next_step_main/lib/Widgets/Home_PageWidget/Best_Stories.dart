@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:next_step/Const/const_fonts.dart';
 import 'package:next_step/Const/const_img.dart';
 
-
 Widget BestStoreiesWidget() {
   return Column(
     crossAxisAlignment:
@@ -41,7 +40,7 @@ Widget BestStoreiesWidget() {
             // Box 1
             BeststoriesBox(),
             // Box 2
-           BeststoriesBox(),
+            BeststoriesBox(),
             // Box 3
             BeststoriesBox(),
             // Add more boxes as needed
@@ -71,7 +70,7 @@ Widget BeststoriesBox() {
             children: [
               // Fill the entire container with the image
               Image.asset(
-                logo, // Replace with your image path
+                'assets/images/Classroom.png', // Updated with the correct path
                 fit: BoxFit.cover, // Fills the container
                 width: double.infinity,
                 height: double.infinity,
