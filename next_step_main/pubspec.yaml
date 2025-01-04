@@ -1,0 +1,36 @@
+name: next_step
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  get: ^4.6.6
+  curved_navigation_bar: ^1.0.6
+  table_calendar: ^3.0.0
+  percent_indicator: ^4.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/images/ # This ensures that both your assets and images are included
+
+  # To add custom fonts, you can define them here as well:
+  # fonts:
+  #   - family: JosefinSans_Bold
+  #     fonts:
+  #       - asset: assets/fonts/JosefinSans-Bold.ttf
+
