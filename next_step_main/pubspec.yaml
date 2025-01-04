@@ -15,6 +15,7 @@ dependencies:
   curved_navigation_bar: ^1.0.6
   table_calendar: ^3.0.0
   percent_indicator: ^4.0.0
+  model_viewer_plus: ^1.9.1
 
 dev_dependencies:
   flutter_test:
@@ -26,7 +27,9 @@ flutter:
 
   assets:
     - assets/
-    - assets/images/ # This ensures that both your assets and images are included
+    - assets/images/
+     
+    # This ensures that both your assets and images are included
 
   # To add custom fonts, you can define them here as well:
   # fonts:
