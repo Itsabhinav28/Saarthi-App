@@ -43,62 +43,22 @@ class _CommunityScreenState extends State<CommunityScreen> {
     {'userName': 'Carol White', 'points': 900, 'profileImage': 'assets/images/carol.jpg'},
   ];
 
-  bool leaderboardVisible = true;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFB2C9AD),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(
-              decoration: const BoxDecoration(color: Color(0xFF4B5945)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Saarthi',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    'Your Trusted Companion',
-                    style: TextStyle(color: Colors.white, fontSize: 14),
-                  ),
-                ],
-              ),
-            ),
-            const ListTile(
-              leading: Icon(Icons.dashboard),
-              title: Text('Dashboard'),
-            ),
-            const ListTile(
-              leading: Icon(Icons.map),
-              title: Text('Journey Planner'),
-            ),
-            const ListTile(
-              leading: Icon(Icons.file_copy),
-              title: Text('My Documents'),
-            ),
-            const ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-            ),
-          ],
-        ),
-      ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             title: const Text(
-              "Community",
-              style: TextStyle(fontSize: 18, color: Colors.white),
-            ),
+  "Community",
+  style: TextStyle(
+    fontSize: 18,
+    color: Colors.white,
+    fontWeight: FontWeight.bold,  // Makes the text bold
+  ),
+),
+
             backgroundColor: const Color(0xFF4B5945),
             expandedHeight: 120.0,
             floating: false,
@@ -109,24 +69,6 @@ class _CommunityScreenState extends State<CommunityScreen> {
                 bottomRight: Radius.circular(30.0),
               ),
             ),
-            leading: Builder(
-              builder: (context) {
-                return IconButton(
-                  icon: const Icon(Icons.menu, color: Colors.white),
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                );
-              },
-            ),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.notifications, color: Colors.white),
-                onPressed: () {
-                  // Handle notification action
-                },
-              ),
-            ],
             flexibleSpace: FlexibleSpaceBar(
               background: Image.asset(
                 "assets/images/logo.jpg",
@@ -137,90 +79,32 @@ class _CommunityScreenState extends State<CommunityScreen> {
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Community Blogs",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 10),
-                  Column(
-                    children: blogs.asMap().entries.map((entry) {
-                      int index = entry.key;
-                      var blog = entry.value;
-                      return BlogWidget(
-                        userName: blog['userName'],
-                        userImage: blog['userImage'],
-                        blogImage: blog['blogImage'],
-                        blogContent: blog['blogContent'],
-                        isLiked: blog['liked'],
-                        isExpanded: blog['expanded'],
-                        onLike: () {
-                          setState(() {
-                            blogs[index]['liked'] = !blogs[index]['liked'];
-                          });
-                        },
-                        onExpand: () {
-                          setState(() {
-                            blogs[index]['expanded'] = !blogs[index]['expanded'];
-                          });
-                        },
-                      );
-                    }).toList(),
-                  ),
-                  const SizedBox(height: 20),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        leaderboardVisible = !leaderboardVisible;
-                      });
-                    },
-                    child: Row(
-                      children: [
-                        const Text(
-                          "Leaderboards for Gamified Progress",
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        Icon(
-                          leaderboardVisible
-                              ? Icons.keyboard_arrow_up
-                              : Icons.keyboard_arrow_down,
-                          color: Colors.black,
-                        ),
+              child: DefaultTabController(
+                length: 2,
+                child: Column(
+                  children: [
+                    TabBar(
+                      labelColor: const Color.fromARGB(255, 78, 133, 86),
+                      unselectedLabelColor: Colors.grey,
+                      indicatorColor: const Color.fromARGB(255, 78, 133, 86),
+                      tabs: const [
+                        Tab(text: "Leaderboard"),
+                        Tab(text: "Blogs"),
                       ],
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  if (leaderboardVisible)
-                    Column(
-                      children: leaderboard.asMap().entries.map((entry) {
-                        int index = entry.key;
-                        var profile = entry.value;
-                        Color medalColor = Colors.grey; // Default for 4th and below
-                        String rankText = '';
-
-                        if (index == 0) {
-                          medalColor = Color(0xFFFFD700); // Gold color (Hex for gold)
-                          rankText = '1st';
-                        } else if (index == 1) {
-                          medalColor = Color(0xFFB0C4DE); // Silver color (Hex for silver)
-                          rankText = '2nd';
-                        } else if (index == 2) {
-                          medalColor = Color(0xFFCD7F32); // Bronze color (Hex for bronze)
-                          rankText = '3rd';
-                        }
-
-                        return LeaderboardWidget(
-                          userName: profile['userName'],
-                          points: profile['points'],
-                          rankText: rankText,
-                          medalColor: medalColor,
-                          profileImage: profile['profileImage'],
-                        );
-                      }).toList(),
+                    SizedBox(
+                      height: 400, // To prevent overflow
+                      child: TabBarView(
+                        children: [
+                          // Leaderboard Tab
+                          _buildLeaderboardTab(),
+                          // Blog Tab
+                          _buildBlogTab(),
+                        ],
+                      ),
                     ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -228,8 +112,68 @@ class _CommunityScreenState extends State<CommunityScreen> {
       ),
     );
   }
+
+  // Widget for Leaderboard Tab
+  Widget _buildLeaderboardTab() {
+    return ListView.builder(
+      itemCount: leaderboard.length,
+      itemBuilder: (context, index) {
+        final profile = leaderboard[index];
+        Color medalColor = Colors.grey; // Default for 4th and below
+        String rankText = '';
+
+        if (index == 0) {
+          medalColor = Color(0xFFFFD700); // Gold color
+          rankText = '1st';
+        } else if (index == 1) {
+          medalColor = Color(0xFFB0C4DE); // Silver color
+          rankText = '2nd';
+        } else if (index == 2) {
+          medalColor = Color(0xFFCD7F32); // Bronze color
+          rankText = '3rd';
+        }
+
+        return LeaderboardWidget(
+          userName: profile['userName'],
+          points: profile['points'],
+          rankText: rankText,
+          medalColor: medalColor,
+          profileImage: profile['profileImage'],
+        );
+      },
+    );
+  }
+
+  // Widget for Blog Tab
+  Widget _buildBlogTab() {
+    return ListView.builder(
+      itemCount: blogs.length,
+      itemBuilder: (context, index) {
+        final blog = blogs[index];
+        return BlogWidget(
+          userName: blog['userName'],
+          userImage: blog['userImage'],
+          blogImage: blog['blogImage'],
+          blogContent: blog['blogContent'],
+          isLiked: blog['liked'],
+          isExpanded: blog['expanded'],
+          onLike: () {
+            setState(() {
+              blogs[index]['liked'] = !blogs[index]['liked'];
+            });
+          },
+          onExpand: () {
+            setState(() {
+              blogs[index]['expanded'] = !blogs[index]['expanded'];
+            });
+          },
+        );
+      },
+    );
+  }
 }
 
+// Blog Widget
 class BlogWidget extends StatelessWidget {
   final String userName;
   final String userImage;
@@ -332,6 +276,7 @@ class BlogWidget extends StatelessWidget {
   }
 }
 
+// Leaderboard Widget
 class LeaderboardWidget extends StatelessWidget {
   final String userName;
   final int points;

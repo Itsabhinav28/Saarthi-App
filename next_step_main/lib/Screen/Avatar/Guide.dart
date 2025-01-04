@@ -21,7 +21,13 @@ class _GuideScreenState extends State<GuideScreen> {
     return Scaffold(
       backgroundColor: homeBg,
       appBar: AppBar(
-        title: const Text('Virtual Guide'),
+        title: const Text(
+  'Virtual Guide',
+  style: TextStyle(
+    fontWeight: FontWeight.bold,  // Makes the text bold
+  ),
+),
+
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {

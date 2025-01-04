@@ -15,6 +15,10 @@ class _ProgressScreenState extends State<ProgressScreen> {
 
   // Sample data for progress (you can replace this with actual data)
   double progress = 0.6;  // Example: 60% progress on the selected day
+  final Map<DateTime, String> sessionReminders = {
+    DateTime(2025, 1, 5): "Yoga Class - 10:00 AM",
+    DateTime(2025, 1, 10): "Meditation Session - 12:00 PM",
+  };
 
   @override
   void initState() {
@@ -27,7 +31,13 @@ class _ProgressScreenState extends State<ProgressScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Progress Tracker'),
+        title: const Text(
+  'Progress Tracker',
+  style: TextStyle(
+    fontWeight: FontWeight.bold,  // Makes the text bold
+  ),
+),
+
         backgroundColor: const Color(0xFF4B5945),
       ),
       body: SingleChildScrollView(
@@ -51,7 +61,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
   Widget _buildCalendar() {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
@@ -71,8 +81,12 @@ class _ProgressScreenState extends State<ProgressScreen> {
             _selectedDay = selectedDay;
             _focusedDay = focusedDay;
           });
-          // Update progress based on selected day (optional)
           _updateProgressForSelectedDay();
+
+          // Check if there's a session reminder for the selected day
+          if (sessionReminders.containsKey(selectedDay)) {
+            _showSessionReminder(selectedDay);
+          }
         },
         calendarStyle: CalendarStyle(
           todayDecoration: BoxDecoration(
@@ -90,9 +104,9 @@ class _ProgressScreenState extends State<ProgressScreen> {
 
   Widget _buildProgressCard() {
     return Card(
-      elevation: 5,
+      elevation: 8,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -101,8 +115,9 @@ class _ProgressScreenState extends State<ProgressScreen> {
             Text(
               "Progress for ${_selectedDay.toLocal().toString().split(' ')[0]}",
               style: const TextStyle(
-                fontSize: 18,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
+                color: Colors.black87,
               ),
             ),
             const SizedBox(height: 16),
@@ -115,7 +130,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
                 style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Color.fromARGB(255, 0, 0, 0),
                 ),
               ),
               progressColor: const Color(0xFF4B5945),
@@ -138,7 +153,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: const Color(0xFFF4F4F4),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.1),
@@ -174,10 +189,29 @@ class _ProgressScreenState extends State<ProgressScreen> {
   }
 
   void _updateProgressForSelectedDay() {
-    // Here, you can update the progress value based on the selected day
-    // For now, we'll use a random value between 0.0 and 1.0 for demonstration purposes
     setState(() {
       progress = 0.6 + (0.4 * (_selectedDay.day / 30));  // Example: progress based on day of the month
     });
+  }
+
+  // Show a popup dialog for session reminders
+  void _showSessionReminder(DateTime selectedDay) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Session Reminder"),
+          content: Text(sessionReminders[selectedDay]!),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
