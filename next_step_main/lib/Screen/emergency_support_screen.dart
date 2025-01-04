@@ -16,7 +16,7 @@ class EmergencySupportScreen extends StatelessWidget {
         ),
         backgroundColor: customPrimaryColor,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFB2C9AD),
       body: Stack(
         children: [
           SingleChildScrollView( // Enables scrolling

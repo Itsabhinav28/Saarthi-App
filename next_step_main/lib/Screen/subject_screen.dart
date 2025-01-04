@@ -29,7 +29,7 @@ class SubjectScreen extends StatelessWidget {
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFB2C9AD),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(

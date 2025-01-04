@@ -35,7 +35,7 @@ class PeerCounselingScreen extends StatelessWidget {
         ),
         backgroundColor:  const Color.fromARGB(255, 78, 133, 86),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor:  const Color(0xFFB2C9AD),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView.builder(
