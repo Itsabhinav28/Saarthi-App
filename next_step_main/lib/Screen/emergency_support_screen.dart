@@ -203,13 +203,13 @@ class EmergencySupportScreen extends StatelessWidget {
         {
           "name": "Teach For India",
           "description": "Providing quality education to underprivileged children.",
-          "image": "assets/images/logo.jpg", // Updated image path
+          "image": "assets/images/SD1.png", // Updated image path
           "type": "Educational Support"
         },
         {
           "name": "Save The Children",
           "description": "Focused on improving education and health for children.",
-          "image": "assets/images/logo.jpg",
+          "image": "assets/images/SD2.png",
           "type": "Child Welfare"
         },
       ];
@@ -218,7 +218,7 @@ class EmergencySupportScreen extends StatelessWidget {
         {
           "name": "Ministry of Education",
           "description": "Supporting educational schemes for underprivileged students.",
-          "image": "assets/images/logo.jpg",
+          "image": "assets/images/SD3.png",
           "type": "Government Grants"
         },
       ];
@@ -227,7 +227,7 @@ class EmergencySupportScreen extends StatelessWidget {
         {
           "name": "John Doe",
           "description": "Donated devices for rural students' education.",
-          "image": "assets/images/logo.jpg",
+          "image": "assets/images/logo1.jpeg",
           "type": "Device Donation"
         },
       ];

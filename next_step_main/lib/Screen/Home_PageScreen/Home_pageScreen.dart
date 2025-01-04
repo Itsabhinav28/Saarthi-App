@@ -26,8 +26,18 @@ class _HomepageScreenState extends State<HomepageScreen> {
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
+                children: [
+                  // Logo Image at the top
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10), // Padding below the logo
+                    child: Image.asset(
+                      'assets/images/logo2.png', // Replace with your logo path
+                      height: 60, // Adjust height as needed
+                      width: 60,  // Adjust width as needed
+                    ),
+                  ),
+                  // "Saarthi" text
+                  const Text(
                     'Saarthi',
                     style: TextStyle(
                       color: Colors.white,
@@ -35,8 +45,9 @@ class _HomepageScreenState extends State<HomepageScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
-                  Text(
+                  const SizedBox(height: 8),
+                  // "Your Trusted Companion" text
+                  const Text(
                     'Your Trusted Companion',
                     style: TextStyle(color: Colors.white, fontSize: 14),
                   ),
@@ -46,10 +57,6 @@ class _HomepageScreenState extends State<HomepageScreen> {
             const ListTile(
               leading: Icon(Icons.dashboard),
               title: Text('Dashboard'),
-            ),
-            const ListTile(
-              leading: Icon(Icons.map),
-              title: Text('Journey Planner'),
             ),
             const ListTile(
               leading: Icon(Icons.file_copy),
@@ -135,7 +142,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                     children: const [
                       SizedBox(height: 60),
                       Text(
-                        "Good Morning, User!",
+                        "Good Morning!",
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
@@ -168,7 +175,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                   const Padding(
                     padding: EdgeInsets.only(left: 16.0), // Added padding
                     child: Text(
-                      "LIVE",
+                      "Virtual Classroom",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -181,7 +188,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
                   const Padding(
                     padding: EdgeInsets.only(left: 16.0), // Added padding
                     child: Text(
-                      "Virtual Classroom",
+                      "",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -200,4 +207,3 @@ class _HomepageScreenState extends State<HomepageScreen> {
     );
   }
 }
-

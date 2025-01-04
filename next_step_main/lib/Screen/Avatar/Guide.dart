@@ -24,11 +24,13 @@ class _GuideScreenState extends State<GuideScreen> {
         title: const Text(
   'Virtual Guide',
   style: TextStyle(
-    fontWeight: FontWeight.bold,  // Makes the text bold
+    fontWeight: FontWeight.bold, // Makes the text bold
+    color: Colors.white,         // Sets the text color to white
   ),
 ),
 
-        backgroundColor: Colors.white,
+
+        backgroundColor: const Color.fromARGB(255, 75, 89, 69),
         leading: IconButton(
           onPressed: () {
             // Implement the back navigation here

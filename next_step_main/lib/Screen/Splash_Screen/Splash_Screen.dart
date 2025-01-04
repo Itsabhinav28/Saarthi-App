@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:next_step/Const/const_colo.dart';
 import 'package:next_step/Const/const_fonts.dart';
 import 'package:next_step/Const/const_img.dart';
 import 'package:next_step/Screen/Avatar/ChooseAvtar.dart';
-import 'package:next_step/Screen/Home_Screen/Home_Screen.dart';
+import 'package:animated_text_kit/animated_text_kit.dart'; // Import for typewriter effect
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,13 +14,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  
   @override
   void initState() {
     super.initState();
-    // Navigate to LoginScreen after 3 seconds
-    Future.delayed(Duration(seconds: 2), () {
-      // Use Get.off() to navigate to the LoginScreen and remove the SplashScreen from the stack
+    // Navigate to ChooseAvatarScreen after 3 seconds
+    Future.delayed(Duration(seconds: 3), () {
       Get.off(() => ChooseAvatarScreen());
     });
   }
@@ -29,33 +26,45 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgcolor,  // Background color from const_Var.dart
+      backgroundColor: bgcolor, // Background color
       body: Center(
-        child: SingleChildScrollView(  
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(logo, height: 150, width: 150),  // Logo image
-              SizedBox(height: 20),  // Adds space between the logo and the text
-              Text(
-                "Welcome To WaterWise",
+              Image.asset(logo2, height: 250, width: 250), // Logo image
+              const SizedBox(height: 20), // Space
+              const Text(
+                "𝐒𝐀𝐀𝐑𝐓𝐇𝐈",
                 style: TextStyle(
-                  fontSize: 18,  // Font size
-                  fontWeight: FontWeight.bold,      
-                  fontFamily: regularfont,  // Font family from const_fonts.dart
-                  backgroundColor: Colors.white54,  // Background color for text
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: regularfont,
+                  backgroundColor: Colors.white54,
                 ),
               ),
-              SizedBox(height: 40), // Adds space between the two texts
-              Text(
-                "Welcome To WaterWise",  // You can change this to a different message if needed
-                style: TextStyle(
-                  fontSize: 18,  // Font size
-                  fontWeight: FontWeight.bold,  // Font weight
-                  fontFamily: boldfont,//ont family
-                  backgroundColor: Colors.white54,  // Background color for text
+              const SizedBox(height: 40), // Space
+              Center(
+                child: AnimatedTextKit(
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      "Your Companion in Learning, \nAnytime, Anywhere",
+                      textStyle: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: boldfont,
+                        color: Colors.black, // Text color
+                      ),
+                      textAlign: TextAlign.center, // Align text to center
+                      speed: const Duration(milliseconds: 50), // Typing speed
+                    ),
+                  ],
+                  totalRepeatCount: 1, // Runs once
+                  pause: const Duration(milliseconds: 500), // Pause at the end
+                  displayFullTextOnTap: true, // Show full text if tapped
+                  stopPauseOnTap: true, // Stops animation if tapped
                 ),
-              ),                          
+              ),
             ],
           ),
         ),

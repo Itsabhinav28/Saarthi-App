@@ -11,24 +11,24 @@ class _CommunityScreenState extends State<CommunityScreen> {
   final List<Map<String, dynamic>> blogs = [
     {
       'userName': 'Alice',
-      'userImage': 'assets/images/logo.jpg',
-      'blogImage': 'assets/images/logo.jpg',
+      'userImage': 'assets/images/logo1.jpeg',
+      'blogImage': 'assets/images/Post1.png',
       'blogContent': 'Discover the beauty of sustainable living and eco-friendly practices.',
       'liked': false,
       'expanded': false,
     },
     {
       'userName': 'Bob',
-      'userImage': 'assets/images/logo.jpg',
-      'blogImage': 'assets/images/logo.jpg',
+      'userImage': 'assets/images/logo3.png',
+      'blogImage': 'assets/images/Post2.png',
       'blogContent': 'Explore the secrets of mindfulness and its benefits for a healthy mind.',
       'liked': false,
       'expanded': false,
     },
     {
       'userName': 'Carol',
-      'userImage': 'assets/images/logo.jpg',
-      'blogImage': 'assets/images/logo.jpg',
+      'userImage': 'assets/images/logo2.jpg',
+      'blogImage': 'assets/images/Post3.png',
       'blogContent': 'Learn how to grow your garden even in limited spaces.',
       'liked': false,
       'expanded': false,
@@ -36,11 +36,11 @@ class _CommunityScreenState extends State<CommunityScreen> {
   ];
 
   final List<Map<String, dynamic>> leaderboard = [
-    {'userName': 'John Doe', 'points': 1200, 'profileImage': 'assets/images/john.jpg'},
-    {'userName': 'Jane Smith', 'points': 1100, 'profileImage': 'assets/images/jane.jpg'},
-    {'userName': 'Alice Johnson', 'points': 1000, 'profileImage': 'assets/images/alice.jpg'},
-    {'userName': 'Bob Brown', 'points': 950, 'profileImage': 'assets/images/bob.jpg'},
-    {'userName': 'Carol White', 'points': 900, 'profileImage': 'assets/images/carol.jpg'},
+    {'userName': 'John Doe', 'points': 1200, 'profileImage': 'assets/images/logo1.jpeg'},
+    {'userName': 'Jane Smith', 'points': 1100, 'profileImage': 'assets/images/logo3.png'},
+    {'userName': 'Alice Johnson', 'points': 1000, 'profileImage': 'assets/images/logo2.jpg'},
+    {'userName': 'Aarna Srivastava', 'points': 950, 'profileImage': 'assets/images/logo4.png'},
+    {'userName': 'Justin White', 'points': 900, 'profileImage': 'assets/images/logo1.jpeg'},
   ];
 
   @override
@@ -71,7 +71,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
             ),
             flexibleSpace: FlexibleSpaceBar(
               background: Image.asset(
-                "assets/images/logo.jpg",
+                "assets/images/community.png",
                 fit: BoxFit.cover,
               ),
             ),

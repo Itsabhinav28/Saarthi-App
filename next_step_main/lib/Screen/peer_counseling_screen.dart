@@ -11,19 +11,19 @@ class PeerCounselingScreen extends StatelessWidget {
         "counselor": "Dr. Amit Sharma",
         "expertise": "Mental Health & Wellness",
         "time": "10:00 AM - 11:00 AM",
-        "image": "assets/images/logo.jpg" // Replace with actual image asset or URL
+        "image": "assets/images/logo1.jpeg" // Replace with actual image asset or URL
       },
       {
         "counselor": "Ms. Priya Verma",
         "expertise": "Career Counseling",
         "time": "1:00 PM - 2:00 PM",
-        "image": "assets/images/logo.jpg" // Replace with actual image asset or URL
+        "image": "assets/images/logo2.jpg" // Replace with actual image asset or URL
       },
       {
         "counselor": "Mr. Rajeev Kumar",
         "expertise": "Stress Management",
         "time": "4:00 PM - 5:00 PM",
-        "image": "assets/images/logo.jpg" // Correct path with forward slashes
+        "image": "assets/images/logo3.png" // Correct path with forward slashes
       },
     ];
 

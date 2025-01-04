@@ -35,10 +35,12 @@ class _ProgressScreenState extends State<ProgressScreen> {
   'Progress Tracker',
   style: TextStyle(
     fontWeight: FontWeight.bold,  // Makes the text bold
+    color: Color.fromARGB(255, 255, 255, 255),          // Sets the text color to black
   ),
 ),
 
-        backgroundColor: const Color(0xFF4B5945),
+
+        backgroundColor: const Color.fromARGB(255, 75, 89, 69),
       ),
       body: SingleChildScrollView(
         child: Padding(

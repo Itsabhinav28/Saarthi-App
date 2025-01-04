@@ -35,14 +35,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF4B5945),
         elevation: 0,
-       title: const Text(
-  "Profile",
-  style: TextStyle(
-    color: Colors.white,
-    fontWeight: FontWeight.bold,  // Makes the text bold
-  ),
-),
-
+        title: const Text(
+          "Profile",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,  // Makes the text bold
+          ),
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -77,8 +76,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFF81C784), Color(0xFF4CAF50)],
+        gradient: LinearGradient(
+          colors: [
+            Color(0xFF81C784).withOpacity(0.5),
+            Color(0xFF4CAF50).withOpacity(0.5),
+          ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -198,8 +200,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [Color(0xFF81C784), Color(0xFF4CAF50)],
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFF81C784).withOpacity(0.5),
+              Color(0xFF4CAF50).withOpacity(0.5),
+            ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
